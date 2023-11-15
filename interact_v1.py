@@ -1,4 +1,6 @@
 #导入工具包
+# Streamlit > ~1.12
+from streamlit.runtime.scriptrunner.script_run_context import get_script_run_ctx as get_report_ctx
 import json
 import time
 from pyecharts.globals import ThemeType
