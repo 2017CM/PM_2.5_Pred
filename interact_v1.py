@@ -23,7 +23,14 @@ from pyecharts.charts import HeatMap
 import calendar
 import locale
 
-locale.setlocale(locale.LC_ALL, 'zh_CN.UTF-8')
+# 检查系统是否支持中文的本地化设置
+if 'zh_CN.utf8' in locale.locale_alias:
+    locale_setting = 'zh_CN.utf8'
+elif 'zh_CN.gb2312' in locale.locale_alias:
+    locale_setting = 'zh_CN.gb2312'
+else:
+    print("Your system does not support the Chinese locale setting.")
+    exit(1)
 
 
 data_path = r'./beijing.csv'
