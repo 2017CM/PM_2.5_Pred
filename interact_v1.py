@@ -35,7 +35,7 @@ def process_data(file_path):
     # 计算缺失比例
     missing['missRate']=missing['missNum']/data.shape[0]
     # 对数据集中的pm2.5这列连续型变量中的缺失值用均值填补
-    data['pm2.5'].fillna(data['pm2.5'].mean(), inplace=True)
+    data['pm2.5'].fillna((data['pm2.5'].ffill() + data['pm2.5'].bfill()) / 2, inplace=True)
     
     return data
 
