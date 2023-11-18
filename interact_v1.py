@@ -177,7 +177,7 @@ chart_data_TEMP = month_chart(data,'TEMP')
 #'不同月份的大气压分布'
 chart_data_PRES = month_chart(data,'PRES')
 #'不同月份的PM2.5分布'
-chart_data_pm25 = month_chart(data,'PM2.5')
+chart_data_pm25 = month_chart(data,'pm2.5')
 
 # '相关性评分'
 corr = correlation_heatmap(train_X)
