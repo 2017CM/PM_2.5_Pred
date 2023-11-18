@@ -20,6 +20,10 @@ from sklearn import metrics
 from sklearn.ensemble import GradientBoostingRegressor
 from streamlit_echarts import st_pyecharts
 from pyecharts.charts import HeatMap
+import calendar
+import locale
+
+locale.setlocale(locale.LC_ALL, 'zh_CN.UTF-8')
 
 
 data_path = r'./beijing.csv'
@@ -196,6 +200,9 @@ option = st.sidebar.radio(
     ('数据集概览','描述性分析','参数优化', '模型评估')
 )
 
+# 获取本地化的月份名称
+months_list = [calendar.month_name[i] for i in range(1, 13)]
+
 # 根据选择的目录项在主面板中显示相应的内容
 if option == '数据集概览':
     st.title("数据集概览")
@@ -204,7 +211,7 @@ elif option == '描述性分析':
     with st.container():
         c1 = (
             Line()
-            .add_xaxis(chart_data_DEWP.index.to_list() + 1)
+            .add_xaxis(xaxis_data=months_list)
             .add_yaxis("DEWP", chart_data_DEWP['均值'].values.tolist())
             .set_global_opts(
                 title_opts=opts.TitleOpts(title="月均露点值"),
@@ -216,7 +223,7 @@ elif option == '描述性分析':
         )
         c2 = (
             Line()
-            .add_xaxis(xaxis_data=chart_data_pm25.index.to_list())
+            .add_xaxis(xaxis_data=months_list)
             .add_yaxis("PM2.5", chart_data_pm25['均值'].values.tolist())
             
             .set_global_opts(
@@ -229,7 +236,7 @@ elif option == '描述性分析':
         )
         c3 = (
             Line()
-            .add_xaxis(xaxis_data=chart_data_pm25.index.to_list())
+            .add_xaxis(xaxis_data=months_list)
             .add_yaxis("PRES", chart_data_PRES['均值'].values.tolist())
             
             .set_global_opts(
@@ -242,7 +249,7 @@ elif option == '描述性分析':
         )
         c4 = (
             Line()
-            .add_xaxis(xaxis_data=chart_data_pm25.index.to_list())
+            .add_xaxis(xaxis_data=months_list)
             .add_yaxis("TEMP", chart_data_TEMP['均值'].values.tolist())
             
             .set_global_opts(
@@ -253,7 +260,7 @@ elif option == '描述性分析':
                 )
             .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1].toFixed(2);}")))
         )
-        t = Timeline(init_opts=opts.InitOpts(theme=ThemeType.LIGHT,width='1200px'))
+        t = Timeline(init_opts=opts.InitOpts(theme=ThemeType.LIGHT,width='1000px'))
         t.add_schema(play_interval=10000,is_auto_play=True)
         t.add(c1, "月均露点值")
         t.add(c2, "月均PM2.5浓度")
