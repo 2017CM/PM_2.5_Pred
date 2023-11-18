@@ -261,7 +261,7 @@ elif option == '描述性分析':
         t.add(c2, "月均PM2.5浓度")
         t.add(c3, "月均大气压强")
         t.add(c4, "月均温度")
-        st_pyecharts(t, width='1000px', height='600px')
+        st_pyecharts(t, width='1200px', height='600px')
 
 elif option == '参数优化':
     st.title('相关性评分')
