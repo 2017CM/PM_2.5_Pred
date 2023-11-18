@@ -177,7 +177,7 @@ chart_data_TEMP = month_chart(data,'TEMP')
 #'不同月份的大气压分布'
 chart_data_PRES = month_chart(data,'PRES')
 #'不同月份的PM2.5分布'
-chart_data_pm25 = month_chart(data,'pm2.5')
+chart_data_pm25 = month_chart(data,'PM2.5')
 
 # '相关性评分'
 corr = correlation_heatmap(train_X)
@@ -205,7 +205,7 @@ elif option == '描述性分析':
         c1 = (
             Line()
             .add_xaxis(chart_data_DEWP.index.to_list())
-            .add_yaxis('DEWP', chart_data_DEWP['均值'].values.tolist())
+            .add_yaxis("DEWP", chart_data_DEWP['均值'].values.tolist())
             .set_global_opts(
                 title_opts=opts.TitleOpts(title="月均露点值"),
                 xaxis_opts=opts.AxisOpts(type_="category"),
@@ -217,7 +217,7 @@ elif option == '描述性分析':
         c2 = (
             Line()
             .add_xaxis(xaxis_data=chart_data_pm25.index.to_list())
-            .add_yaxis("pm2.5", chart_data_pm25['均值'].values.tolist())
+            .add_yaxis("PM2.5", chart_data_pm25['均值'].values.tolist())
             
             .set_global_opts(
                 title_opts=opts.TitleOpts(title="月均PM2.5浓度"),
@@ -260,15 +260,6 @@ elif option == '描述性分析':
         t.add(c3, "月均大气压强")
         t.add(c4, "月均温度")
         st_pyecharts(t, width='800px', height='600px')
-        # components.html(t.render_embed(), width=600, height=400)
-    st.title("月均露点值")
-    st.line_chart(chart_data_DEWP.set_index('月份'))
-    st.title("月均PM2.5浓度")
-    st.line_chart(chart_data_TEMP.set_index('月份'))
-    st.title("月均大气压强")
-    st.line_chart(chart_data_PRES.set_index('月份'))
-    st.title("月均温度")
-    st.line_chart(chart_data_pm25.set_index('月份'))
 
 elif option == '参数优化':
     st.title('相关性评分')
