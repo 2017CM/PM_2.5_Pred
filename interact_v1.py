@@ -240,7 +240,7 @@ elif option == '描述性分析':
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
                 )
-            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1].toFixed(2);}")))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return Math.floor(x.data[1]);}")))
         )
         c4 = (
             Line()
