@@ -212,7 +212,7 @@ elif option == '描述性分析':
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
                 )
-            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1];}")))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1].toFixed(2);}")))
         )
         c2 = (
             Line()
@@ -225,7 +225,7 @@ elif option == '描述性分析':
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
                 )
-            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1];}")))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1].toFixed(2);}")))
         )
         c3 = (
             Line()
@@ -238,7 +238,7 @@ elif option == '描述性分析':
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
                 )
-            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1];}")))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1].toFixed(2);}")))
         )
         c4 = (
             Line()
@@ -251,7 +251,7 @@ elif option == '描述性分析':
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
                 )
-            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1];}")))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1].toFixed(2);}")))
         )
         t = Timeline(init_opts=opts.InitOpts(theme=ThemeType.LIGHT,width='1200px'))
         t.add_schema(play_interval=10000,is_auto_play=True)
@@ -259,7 +259,7 @@ elif option == '描述性分析':
         t.add(c2, "不同月份的pm2.5浓度均值")
         t.add(c3, "不同月份的大气压均值")
         t.add(c4, "不同月份的温度均值")
-        components.html(t.render_embed(), width=1200, height=520)
+        components.html(t.render_embed(), width=600, height=400)
     st.title("不同月份的露点均值")
     st.line_chart(chart_data_DEWP.set_index('月份'))
     st.title("不同月份的pm2,5分布")
