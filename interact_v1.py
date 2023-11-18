@@ -20,18 +20,6 @@ from sklearn import metrics
 from sklearn.ensemble import GradientBoostingRegressor
 from streamlit_echarts import st_pyecharts
 from pyecharts.charts import HeatMap
-import calendar
-import locale
-
-# 检查系统是否支持中文的本地化设置
-if 'zh_CN.utf8' in locale.locale_alias:
-    locale_setting = 'zh_CN.utf8'
-elif 'zh_CN.gb2312' in locale.locale_alias:
-    locale_setting = 'zh_CN.gb2312'
-else:
-    print("Your system does not support the Chinese locale setting.")
-    exit(1)
-
 
 data_path = r'./beijing.csv'
 
@@ -208,7 +196,7 @@ option = st.sidebar.radio(
 )
 
 # 获取本地化的月份名称
-months_list = [calendar.month_name[i] for i in range(1, 13)]
+months_list = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
 
 # 根据选择的目录项在主面板中显示相应的内容
 if option == '数据集概览':
