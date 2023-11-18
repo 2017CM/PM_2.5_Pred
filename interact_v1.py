@@ -204,7 +204,7 @@ elif option == '描述性分析':
     with st.container():
         c1 = (
             Line()
-            .add_xaxis(chart_data_DEWP.index.to_list())
+            .add_xaxis(chart_data_DEWP.index.to_list() + 1)
             .add_yaxis("DEWP", chart_data_DEWP['均值'].values.tolist())
             .set_global_opts(
                 title_opts=opts.TitleOpts(title="月均露点值"),
@@ -259,7 +259,7 @@ elif option == '描述性分析':
         t.add(c2, "月均PM2.5浓度")
         t.add(c3, "月均大气压强")
         t.add(c4, "月均温度")
-        st_pyecharts(t, width='800px', height='600px')
+        st_pyecharts(t, width='1000px', height='600px')
 
 elif option == '参数优化':
     st.title('相关性评分')
