@@ -207,7 +207,7 @@ elif option == '描述性分析':
             .add_xaxis(chart_data_DEWP.index.to_list())
             .add_yaxis('DEWP', chart_data_DEWP['均值'].values.tolist())
             .set_global_opts(
-                title_opts=opts.TitleOpts(title="不同月份的露点均值"),
+                title_opts=opts.TitleOpts(title="月均露点值"),
                 xaxis_opts=opts.AxisOpts(type_="category"),
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
@@ -220,7 +220,7 @@ elif option == '描述性分析':
             .add_yaxis("pm2.5", chart_data_pm25['均值'].values.tolist())
             
             .set_global_opts(
-                title_opts=opts.TitleOpts(title="不同月份的PM2.5浓度均值"),
+                title_opts=opts.TitleOpts(title="月均PM2.5浓度"),
                 xaxis_opts=opts.AxisOpts(type_="category"),
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
@@ -233,7 +233,7 @@ elif option == '描述性分析':
             .add_yaxis("PRES", chart_data_PRES['均值'].values.tolist())
             
             .set_global_opts(
-                title_opts=opts.TitleOpts(title="不同月份的大气压均值"),
+                title_opts=opts.TitleOpts(title="月均大气压强"),
                 xaxis_opts=opts.AxisOpts(type_="category"),
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
@@ -246,7 +246,7 @@ elif option == '描述性分析':
             .add_yaxis("TEMP", chart_data_TEMP['均值'].values.tolist())
             
             .set_global_opts(
-                title_opts=opts.TitleOpts(title="不同月份的温度均值"),
+                title_opts=opts.TitleOpts(title="月均温度"),
                 xaxis_opts=opts.AxisOpts(type_="category"),
                 yaxis_opts=opts.AxisOpts(type_="value",axislabel_opts=opts.LabelOpts(formatter="{value}")),
                 tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross")
@@ -255,19 +255,19 @@ elif option == '描述性分析':
         )
         t = Timeline(init_opts=opts.InitOpts(theme=ThemeType.LIGHT,width='1200px'))
         t.add_schema(play_interval=10000,is_auto_play=True)
-        t.add(c1, "不同月份的露点均值")
-        t.add(c2, "不同月份的pm2.5浓度均值")
-        t.add(c3, "不同月份的大气压均值")
-        t.add(c4, "不同月份的温度均值")
-        st_pyecharts(t, width='600px', height='600px')
+        t.add(c1, "月均露点值")
+        t.add(c2, "月均PM2.5浓度")
+        t.add(c3, "月均大气压强")
+        t.add(c4, "月均温度")
+        st_pyecharts(t, width='800px', height='600px')
         # components.html(t.render_embed(), width=600, height=400)
-    st.title("不同月份的露点均值")
+    st.title("月均露点值")
     st.line_chart(chart_data_DEWP.set_index('月份'))
-    st.title("不同月份的pm2,5分布")
+    st.title("月均PM2.5浓度")
     st.line_chart(chart_data_TEMP.set_index('月份'))
-    st.title("不同月份的大气压分布")
+    st.title("月均大气压强")
     st.line_chart(chart_data_PRES.set_index('月份'))
-    st.title("不同月份的温度分布")
+    st.title("月均温度")
     st.line_chart(chart_data_pm25.set_index('月份'))
 
 elif option == '参数优化':
