@@ -255,13 +255,13 @@ elif option == '描述性分析':
                 )
             .set_series_opts(label_opts=opts.LabelOpts(formatter=JsCode("function(x){return x.data[1].toFixed(2);}")))
         )
-        t = Timeline(init_opts=opts.InitOpts(theme=ThemeType.LIGHT,width='1000px'))
+        t = Timeline(init_opts=opts.InitOpts(theme=ThemeType.LIGHT,width='600px'))
         t.add_schema(play_interval=10000,is_auto_play=True)
         t.add(c1, "月均露点值")
         t.add(c2, "月均PM2.5浓度")
         t.add(c3, "月均大气压强")
         t.add(c4, "月均温度")
-        st_pyecharts(t, width='1200px', height='600px')
+        st_pyecharts(t, width='600px', height='500px')
 
 elif option == '参数优化':
     st.title('相关性评分')
